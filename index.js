@@ -34,8 +34,10 @@ app.get("/getfile/:id",async (req,res)=>{
     let time = new Date().getTime()
     console.log(req.params.id)
     let files = await file.file(req.params.id)
-    console.log(files)
     let buffer = files[0].content
+    if (!fs.existsSync("./temp/")){
+        fs.mkdirSync("./temp/");
+    }
     fs.writeFileSync(`./temp/${time}`,buffer)
     res.download(`./temp/${time}`,`${time}`,()=>{
         fs.unlinkSync(`./temp/${time}`)
