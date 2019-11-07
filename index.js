@@ -34,6 +34,7 @@ app.get("/getfile/:id",async (req,res)=>{
     let time = new Date().getTime()
     console.log(time)
     let files = await file.file(req.params.id)
+    console.log(files)
     let buffer = files[0].content
     fs.writeFileSync(`./temp/${time}`,buffer)
     res.download(`./temp/${time}`,`${time}`,()=>{
