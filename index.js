@@ -28,10 +28,10 @@ app.get("/getinstancias/:id", async (req,res)=>{
     let inst = await instancia.instanacias(req.params.id)
     res.json(inst)
 })
-app.get("/getfile",async (req,res)=>{
+app.get("/getfile/:id",async (req,res)=>{
     let time = new Date().getTime()
     console.log(time)
-    let files = await file.file("sd")
+    let files = await file.file(req.params.id)
     let buffer = files[0].content
     fs.writeFileSync(`./temp/${time}`,buffer)
     res.download(`./temp/${time}`,`${time}`,()=>{
