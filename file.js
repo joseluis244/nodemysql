@@ -9,7 +9,7 @@ return new Promise((Pres,Prej)=>{
         database: "orthanc"
     });
     con.connect()
-    con.query(`SELECT * FROM StorageArea WHERE uuid=${ID} and type=1`,(err,res)=>{
+    con.query(`SELECT * FROM StorageArea WHERE uuid="${ID}" and type=1`,(err,res)=>{
         Pres(res)
         con.end()
     })
