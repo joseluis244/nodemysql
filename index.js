@@ -32,7 +32,7 @@ app.get("/getinstancias/:id", async (req,res)=>{
 })
 app.get("/getfile/:id",async (req,res)=>{
     let time = new Date().getTime()
-    console.log(time)
+    console.log(req.params.id)
     let files = await file.file(req.params.id)
     console.log(files)
     let buffer = files[0].content
