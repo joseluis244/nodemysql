@@ -11,8 +11,8 @@ module.exports.series = function Series(ID){
         });
         con.connect()
         con.query(`SELECT uid.internalId As SER_ID,  uid.publicId As SER_UID, descr.value As DESCRIPCION
-        FROM resources uid
-        JOIN maindicomtags descr ON descr.id = uid.internalId
+        FROM Resources uid
+        JOIN MainDicomTags descr ON descr.id = uid.internalId
         WHERE uid.parentId=${ID} and uid.resourceType=2
         AND descr.tagGroup=8 and descr.tagElement=4158`,(err,res)=>{
             Pres(res)
