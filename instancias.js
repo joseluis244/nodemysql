@@ -5,7 +5,7 @@ module.exports.instanacias = function LeerInstancias(ID){
         const con = mysql.createConnection({
             host: "localhost",
             user: "orthanc",
-            password: "Camachomm310188",
+            password: "orthanc310188",
             database: "orthanc"
         });
         con.connect()

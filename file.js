@@ -5,7 +5,7 @@ return new Promise((Pres,Prej)=>{
     const con = mysql.createConnection({
         host: "localhost",
         user: "orthanc",
-        password: "Camachomm310188",
+        password: "orthanc310188",
         database: "orthanc"
     });
     con.connect()
