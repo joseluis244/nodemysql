@@ -27,6 +27,7 @@ app.get("/getseries/:id",async (req,res)=>{
 app.get("/getinstancias/:id", async (req,res)=>{
     //console.log(req.params.id)
     let inst = await instancia.instanacias(req.params.id)
+    console.log(inst)
     res.json(inst)
 })
 app.get("/getfile/:id",async (req,res)=>{
