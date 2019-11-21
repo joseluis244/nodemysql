@@ -15,7 +15,7 @@ module.exports.isAuth =function isAuth(token){
     try{
         jwt.verify(token,"MedicalTec310188")
         return true
-    }catch{
+    }catch(e){
         return false
     }
 
