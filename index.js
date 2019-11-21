@@ -1,4 +1,5 @@
 const express = require("express")
+const bodyParser = require('body-parser')
 const app = express()
 const cors = require("cors")
 const estudios = require("./estudios")
@@ -7,7 +8,10 @@ const instancia = require("./instancias")
 const file = require("./file")
 const fs = require("fs")
 
+const auth = require("./auth")
 app.use(cors())
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.get("/getestudios", async (req,res)=>{
     let inicio,final
@@ -42,6 +46,15 @@ app.get("/getfile/:id",async (req,res)=>{
     res.download(`./temp/${time}`,`${time}`,()=>{
         fs.unlinkSync(`./temp/${time}`)
     })
+})
+
+app.post("/auth",(req,res)=>{
+    res.json(auth.auth(req.body.username,req.body.password))
+})
+
+app.get("/isAuth/:token", (req,res)=>{
+    let estado = auth.isAuth(req.params.token)
+    res.json({auth:estado})
 })
 
 app.listen(4000,()=>{
