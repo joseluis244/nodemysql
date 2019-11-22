@@ -6,9 +6,9 @@ module.exports.estudios = function LeerEstudios(inicio,final){
         
         const con = mysql.createConnection({
             host: "localhost",
-            user: "orthanc",
-            password: "orthanc310188",
-            database: "orthanc"
+            user: "medicaltecmysql",
+            password: "Medicaltec310188$",
+            database: "medicaltec"
         });
         con.connect()
         con.query(`SELECT fecha.id As ID, CAST(fecha.value as UNSIGNED) As FECHA, nombre.value As NOMBRE, sexo.value As SEXO, pas_id.value As PAS_ID,
