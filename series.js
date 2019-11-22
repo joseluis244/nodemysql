@@ -5,9 +5,9 @@ module.exports.series = function Series(ID){
     return new Promise((Pres,Prej)=>{
         const con = mysql.createConnection({
             host: "localhost",
-            user: "orthanc",
-            password: "orthanc310188",
-            database: "orthanc"
+            user: "medicaltecmysql",
+            password: "Medicaltec310188$",
+            database: "medicaltec"
         });
         con.connect()
         con.query(`SELECT uid.internalId As SER_ID,  uid.publicId As SER_UID, descr.value As DESCRIPCION
