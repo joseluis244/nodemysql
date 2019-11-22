@@ -5,6 +5,7 @@ sudo apt-get install orthanc -y
 sudo apt-get install nodejs -y
 sudo apt-get install npm -y
 sudo apt-get install mysql-server -y
+sudo apt install nginx
 sudo apt-get install build-essential unzip cmake mercurial \
        	       	       uuid-dev libcurl4-openssl-dev liblua5.3-dev \
        	       	       libgtest-dev libpng-dev libsqlite3-dev libssl-dev libjpeg-dev \
@@ -14,10 +15,16 @@ sudo apt-get install libmysqlclient-dev -y
 sudo wget https://www.orthanc-server.com/downloads/get.php?path=/plugin-mysql/OrthancMySQL-2.0.tar.gz
 sudo tar -xvzf get.php?path=%2Fplugin-mysql%2FOrthancMySQL-2.0.tar.gz
 sudo rm get.php\?path\=%2Fplugin-mysql%2FOrthancMySQL-2.0.tar.gz
+sudo mv /etc/orthanc/orthanc.json /etc/orthanc/orthanc.json.bkp
+sudo cp orthanc.json /etc/orthanc/orthanc.json
 cd OrthancMySQL-2.0/
 sudo mkdir BuildMySQL
 cd BuildMySQL
 cmake ../MySQL/ -DSTATIC_BUILD=ON -DCMAKE_BUILD_TYPE=Release
 make
-sudo ln -s $RUTA/OrthancMySQL-2.0/BuildMySQL/libOrthancMySQLIndex.so /usr/share/orthanc/plugins/libOrthancMySQLIndex.so
-sudo ln -s $RUTA/OrthancMySQL-2.0/BuildMySQL/libOrthancMySQLStorage.so /usr/share/orthanc/plugins/libOrthancMySQLStorage.so
+sudo ln -s $RUTA/OrthancMySQL-2.0/BuildMySQL/libOrthancMySQLIndex.so.2.0 /usr/share/orthanc/plugins/libOrthancMySQLIndex.so
+sudo ln -s $RUTA/OrthancMySQL-2.0/BuildMySQL/libOrthancMySQLStorage.so.2.0 /usr/share/orthanc/plugins/libOrthancMySQLStorage.so
+sudo chmod 777 ../$RUTA
+sudo chmod 777 $RUTA
+sudo chmod 777 $RUTA/OrthancMySQL-2.0
+sudo chmod 777 $RUTA/OrthancMySQL-2.0/BuildMySQL

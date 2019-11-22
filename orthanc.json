@@ -15,9 +15,9 @@
     "Host" : "localhost",    // For TCP connections (notably Windows)
     "Port" : 3306,           // For TCP connections (notably Windows)
     "UnixSocket" : "/var/run/mysqld/mysqld.sock",  // For UNIX on localhost
-    "Database" : "orthanc",
-    "Username" : "orthanc",
-    "Password" : "orthanc310188",
+    "Database" : "medicaltec",
+    "Username" : "medicaltecmysql",
+    "Password" : "Medicaltec310188$",
     "Lock" : true            // See section about Locking
 },
 
@@ -99,7 +99,7 @@
   "DicomServerEnabled" : true,
 
   // The DICOM Application Entity Title
-  "DicomAet" : "ORTHANC",
+  "DicomAet" : "MEDICALTEC",
 
   // Check whether the called AET corresponds to the AET of Orthanc
   // during an incoming DICOM SCU request
