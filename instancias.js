@@ -4,9 +4,9 @@ module.exports.instanacias = function LeerInstancias(ID){
     return new Promise((Pres,Prej)=>{
         const con = mysql.createConnection({
             host: "localhost",
-            user: "orthanc",
-            password: "orthanc310188",
-            database: "orthanc"
+            user: "medicaltecmysql",
+            password: "Medicaltec310188$",
+            database: "medicaltec"
         });
         con.connect()
         con.query(`SELECT uid.internalId As INST_ID, uid.publicId As INST_UID, CAST(pos.value As UNSIGNED ) As POS, file.uuid As FILE 

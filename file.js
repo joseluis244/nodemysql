@@ -4,9 +4,9 @@ module.exports.file = function file(ID){
 return new Promise((Pres,Prej)=>{
     const con = mysql.createConnection({
         host: "localhost",
-        user: "orthanc",
-        password: "orthanc310188",
-        database: "orthanc"
+        user: "medicaltecmysql",
+        password: "Medicaltec310188$",
+        database: "medicaltec"
     });
     con.connect()
     con.query(`SELECT * FROM StorageArea WHERE uuid="${ID}" and type=1`,(err,res)=>{
