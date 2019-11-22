@@ -3,6 +3,9 @@ RUTA=$(pwd)
 sudo apt-get update -y
 sudo apt-get install orthanc -y
 sudo apt-get install nodejs -y
+sudo apt-get install libssl1.0-dev -y
+sudo apt-get install nodejs-dev -y
+sudo apt-get install node-gyp -y
 sudo apt-get install npm -y
 sudo apt-get install mysql-server -y
 sudo apt install nginx -y
@@ -27,7 +30,7 @@ cmake ../MySQL/ -DCMAKE_BUILD_TYPE=Release \
 make
 sudo ln -s $RUTA/OrthancMySQL-2.0/BuildMySQL/libOrthancMySQLIndex.so.2.0 /usr/share/orthanc/plugins/libOrthancMySQLIndex.so
 sudo ln -s $RUTA/OrthancMySQL-2.0/BuildMySQL/libOrthancMySQLStorage.so.2.0 /usr/share/orthanc/plugins/libOrthancMySQLStorage.so
-sudo chmod 777 ../$RUTA
+/*sudo chmod 777 ../$RUTA*/
 sudo chmod 777 $RUTA
 sudo chmod 777 $RUTA/OrthancMySQL-2.0
 sudo chmod 777 $RUTA/OrthancMySQL-2.0/BuildMySQL
