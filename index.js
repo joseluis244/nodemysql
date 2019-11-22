@@ -7,6 +7,12 @@ const series = require("./series")
 const instancia = require("./instancias")
 const file = require("./file")
 const fs = require("fs")
+const http = require('http');
+const https = require('https');
+const privateKey  = fs.readFileSync('/var/www/html/medicaltecsrl/ssl/private.key', 'utf8');
+const certificate = fs.readFileSync('/var/www/html/medicaltecsrl/ssl/certificate.crt', 'utf8');
+
+const credentials = {key: privateKey, cert: certificate};
 
 const auth = require("./auth")
 app.use(cors())
@@ -57,6 +63,11 @@ app.get("/isAuth/:token", (req,res)=>{
     res.json({auth:estado})
 })
 
-app.listen(4000,()=>{
-    console.log("servidor en linea")
-})
+// app.listen(4000,()=>{
+//     console.log("servidor en linea")
+// })
+var httpServer = http.createServer(app);
+var httpsServer = https.createServer(credentials, app);
+
+httpServer.listen(4000);
+httpsServer.listen(4043);
