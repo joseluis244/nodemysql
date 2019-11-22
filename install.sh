@@ -1,7 +1,10 @@
 #!/bin/bash
-
+RUTA=$(pwd)
 sudo apt-get update -y
-sudo apt-get install orthanc nodejs npm mysql-server -y
+sudo apt-get install orthanc -y
+sudo apt-get install nodejs -y
+sudo apt-get install npm -y
+sudo apt-get install mysql-server -y
 sudo apt-get install build-essential unzip cmake mercurial \
        	       	       uuid-dev libcurl4-openssl-dev liblua5.3-dev \
        	       	       libgtest-dev libpng-dev libsqlite3-dev libssl-dev libjpeg-dev \
@@ -16,3 +19,5 @@ sudo mkdir BuildMySQL
 cd BuildMySQL
 cmake ../MySQL/ -DSTATIC_BUILD=ON -DCMAKE_BUILD_TYPE=Release
 make
+sudo ln -s $RUTA/OrthancMySQL-2.0/BuildMySQL/libOrthancMySQLIndex.so /usr/share/orthanc/plugins/libOrthancMySQLIndex.so
+sudo ln -s $RUTA/OrthancMySQL-2.0/BuildMySQL/libOrthancMySQLStorage.so /usr/share/orthanc/plugins/libOrthancMySQLStorage.so
