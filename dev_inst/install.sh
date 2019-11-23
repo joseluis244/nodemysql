@@ -15,6 +15,8 @@ sudo apt-get install build-essential unzip cmake mercurial \
 		       zlib1g-dev libdcmtk-dev libboost-all-dev libwrap0-dev \
                        libcharls-dev libjsoncpp-dev libpugixml-dev locales -y
 sudo apt-get install libmysqlclient-dev -y
+mkdir /var/www/html/medicaltecsrl
+mkdir /var/www/html/medicaltecsrl/ssl
 sudo wget https://www.orthanc-server.com/downloads/get.php?path=/plugin-mysql/OrthancMySQL-2.0.tar.gz
 sudo tar -xvzf get.php?path=%2Fplugin-mysql%2FOrthancMySQL-2.0.tar.gz
 sudo rm get.php\?path\=%2Fplugin-mysql%2FOrthancMySQL-2.0.tar.gz
@@ -30,7 +32,7 @@ cmake ../MySQL/ -DCMAKE_BUILD_TYPE=Release \
 make
 sudo ln -s $RUTA/OrthancMySQL-2.0/BuildMySQL/libOrthancMySQLIndex.so.2.0 /usr/share/orthanc/plugins/libOrthancMySQLIndex.so
 sudo ln -s $RUTA/OrthancMySQL-2.0/BuildMySQL/libOrthancMySQLStorage.so.2.0 /usr/share/orthanc/plugins/libOrthancMySQLStorage.so
-/*sudo chmod 777 ../$RUTA*/
+
 sudo chmod 777 $RUTA
 sudo chmod 777 $RUTA/OrthancMySQL-2.0
 sudo chmod 777 $RUTA/OrthancMySQL-2.0/BuildMySQL

@@ -1,6 +1,6 @@
 {
     "host": "localhost",
-    "user": "orthanc",
-    "password": "orthanc310188",
-    "database": "orthanc"
+    "user": "medicaltecmysql",
+    "password": "Medicaltec310188$",
+    "database": "medicaltec"
 }
