@@ -1,3 +1,4 @@
-sudo apt-get install vsftpd
+#!/bin/bash
+sudo apt-get install vsftpd -y
 sudo cp vsftp.conf /etc/vsftp.conf
-sudo adduser medicaltecFTP
+sudo adduser medicaltecftp
