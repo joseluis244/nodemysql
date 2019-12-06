@@ -33,7 +33,7 @@ app.get("/getseries/:id",async (req,res)=>{
     for(let i = 0; i<=lista_series.length-1; i++){
         let description = await series.descripcion(lista_series[i].SER_ID)
         if(description.length == 0){
-            console.log("sin descripcion")
+            console.log(`toma ${i}`)
         }else{
             console.log(description[0])
         }
