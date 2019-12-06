@@ -25,3 +25,24 @@ module.exports.series = function Series(ID){
     })
 
 }
+
+module.exports.descripcion = function Descripcion(ID){
+
+    return new Promise((Pres,Prej)=>{
+
+        const con = mysql.createConnection({
+            host: "localhost",
+            user: "medicaltecmysql",
+            password: "Medicaltec310188$",
+            database: "medicaltec"
+        });
+        con.connect()
+        con.query(`select value As DESCRIPCION from medicaltec.MainDicomTags where id = ${ID} and ( (tagGroup=8 and tagElement=4158) or (tagGroup=24 and tagElement=5120) )`,(err,res)=>{
+            Pres(res)
+            con.end()
+        })
+
+    })
+
+
+}

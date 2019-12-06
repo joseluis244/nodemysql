@@ -30,7 +30,10 @@ app.get("/getestudios", async (req,res)=>{
 app.get("/getseries/:id",async (req,res)=>{
     let dbid = req.params.id.split("@")[0]
     let lista_series = await series.series(dbid)
-    console.log(lista_series)
+    for(let i = 0; i<=lista_series.length-1; i++){
+        let description = await series.descripcion(lista_series[i].SER_ID)
+        console.log(description)
+    }
     res.json(lista_series)
 })
 
