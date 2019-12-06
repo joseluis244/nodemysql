@@ -32,9 +32,12 @@ app.get("/getseries/:id",async (req,res)=>{
     let lista_series = await series.series(dbid)
     for(let i = 0; i<=lista_series.length-1; i++){
         let description = await series.descripcion(lista_series[i].SER_ID)
+        console.log(lista_series[i])
         if(description.length == 0){
+            lista_series[i].DESCRIPCION = `toma ${i}`
             console.log(`toma ${i}`)
         }else{
+            lista_series[i].DESCRIPCION = description[0].DESCRIPCION
             console.log(description[0])
         }
     }
