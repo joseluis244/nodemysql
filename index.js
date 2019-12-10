@@ -88,7 +88,8 @@ app.get("/getenlase/:id",async (req,res)=>{
             data.paciente = pre_data[i].value
         }
     }
-    res.send(data)
+    let token = auth.enlase(data)
+    res.send(token)
 })
 
 // app.listen(4000,()=>{
