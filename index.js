@@ -76,7 +76,19 @@ app.get("/isAuth/:token", (req,res)=>{
 app.get("/getenlase/:id",async (req,res)=>{
     let dbid = req.params.id.split("@")[0]
     let pre_data = await datosenlase.datosEnlase(dbid)
-    res.send(pre_data)
+    let data = { estudio: dbid,paciente:"",fecha:"",descripcion:"" }
+    for(let i = 0; i<=pre_data.length-1 ;i++){
+        if(pre_data[i].tagGroup==8 && pre_data[i].tagElement==32){
+            data.fecha = `${pre_data[i].value[6]}${pre_data[i].value[7]}/${pre_data[i].value[4]}${pre_data[i].value[5]}/${pre_data[i].value[0]}${pre_data[i].value[1]}${pre_data[i].value[2]}${pre_data[i].value[3]}`
+        }
+        if(pre_data[i].tagGroup==8 && pre_data[i].tagElement==4144){
+            data.descripcion = pre_data[i].value
+        }
+        if(pre_data[i].tagGroup==16 && pre_data[i].tagElement==16){
+            data.paciente = pre_data[i].value
+        }
+    }
+    res.send(data)
 })
 
 // app.listen(4000,()=>{
