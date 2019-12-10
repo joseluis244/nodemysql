@@ -6,6 +6,7 @@ const estudios = require("./estudios")
 const series = require("./series")
 const instancia = require("./instancias")
 const file = require("./file")
+const datosenlase = require("./datosenlase")
 const fs = require("fs")
 const http = require('http');
 const https = require('https');
@@ -70,6 +71,12 @@ app.post("/auth",(req,res)=>{
 app.get("/isAuth/:token", (req,res)=>{
     let estado = auth.isAuth(req.params.token)
     res.json({auth:estado})
+})
+
+app.get("/getenlase/:id",async (req,res)=>{
+    let dbid = req.params.id.split("@")[0]
+    let pre_data = await datosenlase.datosEnlase(dbid)
+    res.send(pre_data)
 })
 
 // app.listen(4000,()=>{

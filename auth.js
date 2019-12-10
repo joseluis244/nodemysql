@@ -20,3 +20,8 @@ module.exports.isAuth =function isAuth(token){
     }
 
 }
+
+module.exports.enlase = function enlase(data){
+    let token = jwt.sign( data,"MedicalTec310188",{expiresIn:"48h"} )
+    return(token)
+}
