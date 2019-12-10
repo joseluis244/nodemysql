@@ -89,7 +89,7 @@ app.get("/getenlase/:id",async (req,res)=>{
         }
     }
     let token = auth.enlase(data)
-    res.send(token)
+    res.json({token:token})
 })
 
 // app.listen(4000,()=>{
