@@ -11,6 +11,7 @@ const http = require('http');
 const nodemailer = require('nodemailer');
 const mensaje = require('./generarcorreo')
 const medibook = require('./medibook')
+const jwt = require("jsonwebtoken")
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -123,8 +124,11 @@ app.post('/sharecorreo',(req,res)=>{
 app.get('/medibook/:patid',(req,res)=>{
     let id = req.params.patid
     medibook.medibook(id)
-    .then((res)=>{
-        console.log(res)
+    .then((ress)=>{
+        let token = jwt.sign({ estudio: ress.id }, "medicaltec", {
+            expiresIn: "48h"
+        });
+        res.send(token)
     })
 })
 // app.listen(4000,()=>{

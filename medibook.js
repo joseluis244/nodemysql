@@ -10,7 +10,7 @@ module.exports.medibook = async function medibook(id){
         });
         con.connect()
         con.query(`SELECT * FROM medicaltec.MainDicomTags where tagElement = 32 and tagGroup = 16 and value = ${id}`,(err,res)=>{
-            Pres(res)
+            Pres(res[0])
             con.end()
         })
     })
