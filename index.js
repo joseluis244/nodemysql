@@ -7,13 +7,20 @@ const series = require("./series")
 const instancia = require("./instancias")
 const file = require("./file")
 const datosenlase = require("./datosenlase")
-const fs = require("fs")
 const http = require('http');
-const https = require('https');
-const privateKey  = fs.readFileSync('/var/www/html/medicaltecsrl/ssl/private.key', 'utf8');
-const certificate = fs.readFileSync('/var/www/html/medicaltecsrl/ssl/certificate.crt', 'utf8');
+const nodemailer = require('nodemailer');
+const mensaje = require('./generarcorreo')
+const medibook = require('./medibook')
 
-const credentials = {key: privateKey, cert: certificate};
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'jose.camacho@medicaltecsrl.com',
+        pass: 'Camachomm310188'
+    }
+});
+
+//const credentials = {key: privateKey, cert: certificate};
 
 const auth = require("./auth")
 app.use(cors())
@@ -91,12 +98,40 @@ app.get("/getenlase/:id",async (req,res)=>{
     let token = auth.enlase(data)
     res.json({token:token})
 })
-
+app.post('/sharecorreo',(req,res)=>{
+    let destinatario = req.body.destino
+    let fechasys = new Date()
+    let fecha = `${fechasys.getDate()}/${fechasys.getMonth()+1}/${fechasys.getFullYear()} ${fechasys.getHours()}:${fechasys.getMinutes()}`
+    let titulo = `Estudio Radiologico ${fecha}`
+    let datos = req.body.data
+    var mailOptions = {
+        from: 'jose.camacho@medicaltecsrl.com',
+        to: destinatario,
+        subject: titulo,
+        html: mensaje.mail(datos)
+    }
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+            res.json({res:'listo'})
+        } else {
+            console.log('Email sent: ' + info.response);
+            res.send({res:'error'})
+        }
+    });
+})
+app.get('/medibook/:patid',(req,res)=>{
+    let id = req.params.patid
+    medibook.medibook(id)
+    .then((res)=>{
+        console.log(res)
+    })
+})
 // app.listen(4000,()=>{
 //     console.log("servidor en linea")
 // })
 var httpServer = http.createServer(app);
-var httpsServer = https.createServer(credentials, app);
+//var httpsServer = https.createServer(credentials, app);
 
 httpServer.listen(4000);
-httpsServer.listen(4043);
+//httpsServer.listen(4043);

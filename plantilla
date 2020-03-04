@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  </head>
+  <style>
+    body {
+      background-color: #f8f9fa !important;
+      height: 100%;
+    }
+    h1 {
+      text-align: center;
+      padding-top: 20px;
+      font-family: monospace;
+    }
+    .Contenedor {
+      height: 700px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .Tarjeta {
+      background-color: white;
+      width: 582px;
+      height: 600px;
+      box-sizing: border-box;
+      box-shadow: -4px 4px 6px #a5a5a57a, 4px 4px 6px #a5a5a57a,
+        0px -2px 6px #a5a5a57a;
+      display: grid;
+      grid-template-rows: 1.8fr 120px 60px 1fr;
+    }
+    .imagen {
+      background-image: url(https://uploads.codesandbox.io/uploads/user/ce79f30c-541c-437c-9d78-8f7844094ac3/3-sz-logoletras.png);
+      background-size: 190px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .mensaje {
+      font-family: monospace;
+      box-sizing: border-box;
+      padding: 10px;
+      font-size: 17px;
+    }
+    .Boton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .verestudio {
+      background-color: #cf1f0b;
+      color: white;
+      width: 200px;
+      height: 30px;
+      border-radius: 3px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: -3px 3px 2px #0000007a, 2px 3px 2px #0000007a,
+        0px -2px 2px #0000007a;
+    }
+  </style>
+  <body>
+    <h1>MedicalTec Soluciones SRL</h1>
+    <div class="Contenedor">
+      <div class="Tarjeta">
+        <div class="imagen"></div>
+        <div class="mensaje">
+          <p>
+            Acceder a los estudios en calidad DICOM es ahora mas facil que
+            nunca.
+          </p>
+          <p>
+            Medicaltec adjunta en este correo el link del estudio solo debe
+            hacer clic en el boton
+          </p>
+        </div>
+        <div class="Boton">
+          <span class="verestudio" onclick="irdireccion()">VER</span>
+        </div>
+        <div>${datos}</div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function irdireccion() {
+      window.open("https://www.google.com");
+    }
+  </script>
+</html>
